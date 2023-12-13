@@ -47,10 +47,9 @@ sudo service nginx restart
 >OR 
 <br>
 I have writen a bash script i.e. **configure.sh** to automate the process.
-<br>How to use configure.sh?
-```
-Make Necessary changes specified inside **{}**
-```
+<br>How to use configure.sh?<br>
+Ans.: Make Necessary changes specified inside **{}**
+
 ```bash
 chmod 777 configure.sh
 ./configure.sh
