@@ -2,9 +2,27 @@
 
 package models
 
-import "gorm.io/gorm"
+import (
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
+)
 
 // "DB" is assigned a pointer to a <<GORM database object>>.
 var DB *gorm.DB
 
-func ConnectDatabase() {}
+func ConnectDatabase() {
+	// 1. Open the DB
+	database, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+
+	if err != nil {
+		println("Error connecting database!!")
+	}
+
+	err = database.AutoMigrate(&Book{})
+
+	if err != nil {
+		return
+	}
+
+	DB = database
+}
