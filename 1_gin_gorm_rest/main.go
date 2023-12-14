@@ -44,6 +44,8 @@ func main() {
 
 	// Make a GET req ~ Express
 	r.GET("/books", controllers.FindBooks)
+	r.POST("/books", controllers.CreateBook)
+	r.GET("/books/:id", controllers.FindBook)
 
 	// 3. start the HTTP server and serve HTTP requests based on the routes
 	r.Run()
