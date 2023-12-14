@@ -3,7 +3,8 @@
 package main
 
 import (
-	"net/http"
+	"1_gin_gorm_rest/controllers"
+	"1_gin_gorm_rest/models"
 
 	"github.com/gin-gonic/gin"
 )
@@ -25,11 +26,11 @@ func main() {
 								- i.e. anonymous function to handle HTTP requests in Gin
 	*/
 
-	r.GET("/", func(ctx *gin.Context) { // route handler for GET requests; Path: '/' i.e. root
-		ctx.JSON(http.StatusOK, gin.H{
-			"creator": "PsychoPunkSage",
-		})
-	})
+	// r.GET("/", func(ctx *gin.Context) { // route handler for GET requests; Path: '/' i.e. root
+	// 	ctx.JSON(http.StatusOK, gin.H{
+	// 		"creator": "PsychoPunkSage",
+	// 	})
+	// })
 
 	/* 2b.
 	ANALOGY:: {express.js}
@@ -37,6 +38,12 @@ func main() {
 	 - ctx similar to request/response objects
 	 - ctx.JSON() sends JSON response like res.json()
 	*/
+
+	// Connect with DB
+	models.ConnectDatabase()
+
+	// Make a GET req ~ Express
+	r.GET("/books", controllers.FindBooks)
 
 	// 3. start the HTTP server and serve HTTP requests based on the routes
 	r.Run()
