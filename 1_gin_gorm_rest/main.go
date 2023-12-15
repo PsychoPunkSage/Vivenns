@@ -46,7 +46,12 @@ func main() {
 	r.GET("/books", controllers.FindBooks)
 	r.POST("/books", controllers.CreateBook)
 	r.GET("/books/:id", controllers.FindBook)
+	r.PATCH("/books/:id", controllers.UpdateBook)
+	r.DELETE("/books/:id", controllers.DeleteBook)
 
 	// 3. start the HTTP server and serve HTTP requests based on the routes
-	r.Run()
+	err := r.Run()
+	if err != nil {
+		return
+	}
 }
