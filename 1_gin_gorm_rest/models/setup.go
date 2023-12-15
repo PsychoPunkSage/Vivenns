@@ -11,18 +11,20 @@ import (
 var DB *gorm.DB
 
 func ConnectDatabase() {
-	// 1. Open the DB + initializes a GORM db connection object
+	// 1. Open the DB + Use `GORM`` to connect to a SQLite database file
 	database, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
 
 	if err != nil {
 		println("Error connecting database!!")
 	}
 
+	// migrate the Book model. Creates the table if it does not already exist
 	err = database.AutoMigrate(&Book{})
 
 	if err != nil {
 		return
 	}
 
+	// Assign the db connection to global var
 	DB = database
 }
