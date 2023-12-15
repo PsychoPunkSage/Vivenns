@@ -35,29 +35,19 @@ func FindBooks(ctx *gin.Context) {
 // ////////////
 
 // return particular book from our database
-// func FindBook(ctx *gin.Context) {
-// 	var book models.Book
-
-// 	err := models.DB.Where("id = ?", ctx.Param("id")).First(&book).Error
-// 	if err != nil {
-// 		ctx.JSON(http.StatusBadRequest, gin.H{
-// 			"Error": "Record Not Found",
-// 		})
-// 	}
-
-//		ctx.JSON(http.StatusOK, gin.H{
-//			"BookData": book,
-//		})
-//	}
-func FindBook(c *gin.Context) { // Get model if exist
+func FindBook(ctx *gin.Context) {
 	var book models.Book
 
-	if err := models.DB.Where("id = ?", c.Param("id")).First(&book).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
-		return
+	err := models.DB.Where("id = ?", ctx.Param("id")).First(&book).Error
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"Error": "Record Not Found",
+		})
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": book})
+	ctx.JSON(http.StatusOK, gin.H{
+		"BookData": book,
+	})
 }
 
 // //////////////
