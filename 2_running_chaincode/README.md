@@ -191,7 +191,7 @@ Error: endorsement failure during invoke. response: status:500 message:"the asse
 ```
 
 ## Resources
-* [Hyperledger Fabric-Sample](https://github.com/hyperledger/fabric-samples.) (Go through it)
+* [Hyperledger Fabric-Sample](https://github.com/hyperledger/fabric-samples) (Go through it)
 
 
 ## Contributing
