@@ -1,0 +1,120 @@
+<!-- <!DOCTYPE html>
+<html>
+<body>
+
+<h1>Invoke Chaincode</h1>
+
+<button onclick="invokeChaincode()">Submit</button>
+
+<p id="result"></p>
+
+<script>
+async function invokeChaincode() {
+
+  const response = await fetch('http://localhost:3000/invoke', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+      channelid: 'mychannel',
+      chaincodeid: 'basic',
+      function: 'createAsset',
+      args: ['Asset123','yellow','54','Tom','13005']
+    })
+  });
+
+  const data = await response.json();
+
+  document.getElementById("result").innerHTML = JSON.stringify(data);
+
+}
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background: #f2f2f2;
+            font-family: Arial;
+        }
+
+        button {
+            background: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 25px;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #result {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 5px;
+            color: #555;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Invoke and Query</h1>
+
+    <h3>Create Asset</h3>
+
+    <form id="createForm">
+        Channel ID: <input type="text" id="channelID" name="channelID"><br><br>
+
+        Chaincode ID: <input type="text" id="chaincodeID" name="chaincodeID"><br><br>
+
+        <!-- Function: <input type="text" id="function" name="function"><br><br>   -->
+
+        Asset ID: <input type="text" id="assetID" name="assetID"><br><br>
+
+        Color: <input type="text" id="color" name="color"><br><br>
+
+        Size: <input type="text" id="size" name="size"><br><br>
+
+        Owner: <input type="text" id="owner" name="owner"><br><br>
+
+        Appraised Value: <input type="text" id="appraisedValue" name="appraisedValue"><br><br>
+
+        <button type="button" onclick="createAsset()">Create Asset</button>
+
+        <textarea id="createResult"></textarea>
+    </form>
+
+    <h3>Get All Assets</h3>
+
+    <button onclick="getAllAssets()">Get All Assets</button>
+
+    <textarea id="getAllResult"></textarea>
+
+    <h3>Count All Assets</h3>
+
+    <button onclick="countAllAssets()">Count All Assets</button>
+
+    <textarea id="countResult"></textarea>
+
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
