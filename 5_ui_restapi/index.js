@@ -1,45 +1,57 @@
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 async function createAsset() {
-    /*const response = */await fetch(proxyurl + 'http://localhost:3000/invoke', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: new URLSearchParams({
-        channelid: document.getElementById('channelID').value,
-        chaincodeid: document.getElementById('chaincodeID').value,
-        function: createAsset,
-        args: [
-            document.getElementById('assetID').value,
-            document.getElementById('color').value,
-            document.getElementById('size').value,
-            document.getElementById('owner').value,
-            document.getElementById('appraisedValue').value
-        ]
-    })
-})
-        .then(response => response.json())
-        .then(data => {
-            console.log('Create Asset Response:', data);
-            // Update UI or handle response data here
+    const response = await fetch(proxyurl + 'http://localhost:3000/invoke', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+            channelid: document.getElementById('channelID').value,
+            chaincodeid: document.getElementById('chaincodeID').value,
+            function: createAsset,
+            args: [
+                document.getElementById('assetID').value,
+                document.getElementById('color').value,
+                document.getElementById('size').value,
+                document.getElementById('owner').value,
+                document.getElementById('appraisedValue').value
+            ]
         })
-        .catch(error => {
-            console.error('Error creating asset:', error);
-            // Handle error scenario
-        });
-    // console.log(response);
-    // document.getElementById('createResult').value = await response.text();
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log('Create Asset Response:', data);
+        document.getElementById('createResult').value = data;
+        // Update UI or handle response data here
+    })
+    .catch(error => {
+        console.error('Error creating asset:', error);
+        // Handle error scenario
+    });
 }
 
-async function getAllAssets() {
-    const response = await fetch('http://localhost:3000/query?channelid=mychannel&chaincodeid=basic&function=GelAllAssets');
-    console.log(response);
-    document.getElementById('getAllResult').value = await response.text();
+const getAllAssets = () => {
+    fetch("http://localhost:3000/query?channelid=mychannel&chaincodeid=basic&function=GetAllAssets")
+        .then((response) => {
+            return response.text();
+        })
+        .then((data) => {
+            console.log(data);
+            document.getElementById('get-all-assets-response').value = data;
+        });
 }
+
 
 async function countAllAssets() {
-    const response = await fetch('http://localhost:3000/query?channelid=mychannel&chaincodeid=basic&function=CountAllAssets');
-    console.log(response);
-    document.getElementById('countResult').value = await response.text();
+    fetch("http://localhost:3000/query?channelid=mychannel&chaincodeid=basic&function=CountAllAssets")
+        .then((response) => {
+            return response.text();
+        })
+        .then((data) => {
+            console.log(data);
+            document.getElementById("count-all-assets-response").value = data
+        })
 }
+
+
