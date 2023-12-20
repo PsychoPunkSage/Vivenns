@@ -10,21 +10,16 @@ const createAsset = () => {
             function: "createAsset",
             // args: `${document.getElementById('assetid').value} ${document.getElementById('assetcolor').value} ${document.getElementById('assetsize').value} ${document.getElementById('assetowner').value} ${document.getElementById('assetappraisedvalue').value}`,
             args: [
-                document.getElementById('assetid').value,
-                document.getElementById('assetcolor').value,
-                document.getElementById('assetsize').value,
-                document.getElementById('assetowner').value,
+                document.getElementById('assetid').value, 
+                document.getElementById('assetcolor').value, 
+                document.getElementById('assetsize').value, 
+                document.getElementById('assetowner').value, 
                 document.getElementById('assetappraisedvalue').value,
             ]
-            // args: document.getElementById('assetid').value,
-            // args: document.getElementById('assetcolor').value,
-            // args: document.getElementById('assetsize').value,
-            // args: document.getElementById('assetowner').value,
-            // args: document.getElementById('assetappraisedvalue').value,
         }),
     })
         .then((response) => {
-            return response.json();
+            return response.text();
         })
         .then((data) => {
             console.log('Create Asset Response:', data);
