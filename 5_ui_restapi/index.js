@@ -1,34 +1,39 @@
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
-
-async function createAsset() {
-    const response = await fetch(proxyurl + 'http://localhost:3000/invoke', {
+const createAsset = () => {
+    fetch('http://localhost:3000/invoke', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: new URLSearchParams({
-            channelid: document.getElementById('channelID').value,
-            chaincodeid: document.getElementById('chaincodeID').value,
-            function: createAsset,
+            channelid: "mychannel",
+            chaincodeid: "basic",
+            function: "createAsset",
+            // args: `${document.getElementById('assetid').value} ${document.getElementById('assetcolor').value} ${document.getElementById('assetsize').value} ${document.getElementById('assetowner').value} ${document.getElementById('assetappraisedvalue').value}`,
             args: [
-                document.getElementById('assetID').value,
-                document.getElementById('color').value,
-                document.getElementById('size').value,
-                document.getElementById('owner').value,
-                document.getElementById('appraisedValue').value
+                document.getElementById('assetid').value,
+                document.getElementById('assetcolor').value,
+                document.getElementById('assetsize').value,
+                document.getElementById('assetowner').value,
+                document.getElementById('assetappraisedvalue').value,
             ]
+            // args: document.getElementById('assetid').value,
+            // args: document.getElementById('assetcolor').value,
+            // args: document.getElementById('assetsize').value,
+            // args: document.getElementById('assetowner').value,
+            // args: document.getElementById('assetappraisedvalue').value,
+        }),
+    })
+        .then((response) => {
+            return response.json();
         })
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log('Create Asset Response:', data);
-        document.getElementById('createResult').value = data;
-        // Update UI or handle response data here
-    })
-    .catch(error => {
-        console.error('Error creating asset:', error);
-        // Handle error scenario
-    });
+        .then((data) => {
+            console.log('Create Asset Response:', data);
+            document.getElementById('create-asset-response').value = data;
+        })
+    // .catch(error => {
+    //     console.error('Error creating asset:', error);
+    //     // document.getElementById('create-asset-response').value = `Error:: ${error}`;
+    // });
 }
 
 const getAllAssets = () => {
@@ -43,7 +48,7 @@ const getAllAssets = () => {
 }
 
 
-async function countAllAssets() {
+const countAllAssets = () => {
     fetch("http://localhost:3000/query?channelid=mychannel&chaincodeid=basic&function=CountAllAssets")
         .then((response) => {
             return response.text();
