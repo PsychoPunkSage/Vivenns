@@ -8,14 +8,15 @@ const createAsset = () => {
             channelid: "mychannel",
             chaincodeid: "basic",
             function: "createAsset",
-            // args: `${document.getElementById('assetid').value} ${document.getElementById('assetcolor').value} ${document.getElementById('assetsize').value} ${document.getElementById('assetowner').value} ${document.getElementById('assetappraisedvalue').value}`,
-            args: [
-                document.getElementById('assetid').value, 
-                document.getElementById('assetcolor').value, 
-                document.getElementById('assetsize').value, 
-                document.getElementById('assetowner').value, 
-                document.getElementById('assetappraisedvalue').value,
-            ]
+            args: `${document.getElementById('assetid').value.toString()} ${document.getElementById('assetcolor').value.toString()} ${document.getElementById('assetsize').value.toString()} ${document.getElementById('assetowner').value.toString()} ${document.getElementById('assetappraisedvalue').value.toString()}`
+            // args: ["Asset123", "yellow", "54", "Tom", "1000"]
+            // args: [
+            //     document.getElementById('assetid').value, 
+            //     document.getElementById('assetcolor').value, 
+            //     document.getElementById('assetsize').value, 
+            //     document.getElementById('assetowner').value, 
+            //     document.getElementById('assetappraisedvalue').value,
+            // ]
         }),
     })
         .then((response) => {
