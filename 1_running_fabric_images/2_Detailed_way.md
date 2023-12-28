@@ -16,7 +16,7 @@ Go through the folders and observe the structure and filsystem.
 
 ## Running the images
 
->> **Start the test network**
+>> **START THE TEST NETWORK**
 ```bash
 ./network.sh up createChannel
 ```
