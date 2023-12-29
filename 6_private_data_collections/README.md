@@ -465,3 +465,13 @@ peer chaincode query -o localhost:7050 --ordererTLSHostnameOverride orderer.exam
 ```bash
 ./network.sh down
 ```
+
+## Resources
+* [Fabric - Private Data](https://hyperledger-fabric.readthedocs.io/en/release-2.5/private-data/private-data.html) (Must read)
+* [Private Data in Fabric](https://hyperledger-fabric.readthedocs.io/en/release-2.5/private_data_tutorial.html) (Must read)
+
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
