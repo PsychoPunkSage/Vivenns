@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyperledger Fabric Tool</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+
+<!-- {",",",\"vehicleMfgYear\":2020,\} -->
+<body>
+  <h1>Hyperledger Fabric Tool</h1>
+
+  <form id="create-asset-form">
+    <div class="form-group">
+      <label for="vehicleNumber">Vehicle Registration No.</label>
+      <input type="text" id="vehicleNumber" name="vehicleNumber" required>
+    </div>
+    <div class="form-group">
+      <label for="vehicleCompany">Company</label>
+      <input type="text" id="vehicleCompany" name="vehicleCompany" required>
+    </div>
+    <div class="form-group">
+      <label for="vehicleName">Vehicle Name</label>
+      <input type="text" id="vehicleName" name="vehicleName" required>
+    </div>
+    <div class="form-group">
+      <label for="vehicleMfgYear">Manufactured Year</label>
+      <input type="text" id="vehicleMfgYear" name="vehicleMfgYear" required>
+    </div>
+    <div class="form-group">
+      <label for="vehicleLife">Vehicle Life</label>
+      <input type="text" id="vehicleLife" name="vehicleLife" required>
+    </div>
+    <div class="button-group">
+      <button type="button" onclick="createAsset()">Create Asset</button>
+    </div>
+    <textarea id="create-asset-response" readonly></textarea>
+  </form>
+
+
+  <div>
+    <button type="button" onclick="getAllAssets()">Get All Assets</button>
+    <textarea id="get-all-assets-response" readonly></textarea>
+  </div>
+
+  <div>
+    <button type="button" onclick="countAllAssets()">Count All Assets</button>
+    <textarea id="count-all-assets-response" readonly></textarea>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+
+<!-- peer chaincode query -C mychannel -n private -c '{"function":"ReadAsset","Args":["asset1"]}' -->
+<!-- peer chaincode query -C mychannel -n private -c '{"function":"ReadAssetPrivateDetails","Args":["Org1MSPPrivateCollection","asset1"]}' -->
+</html>
