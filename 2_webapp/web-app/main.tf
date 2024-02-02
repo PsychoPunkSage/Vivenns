@@ -177,3 +177,15 @@ resource "aws_route53_record" "root" {
     evaluate_target_health = true
   }
 }
+
+# Database
+resource "aws_db_instance" "db_instance" {
+  allocated_storage   = 20
+  storage_type        = "standard"
+  engine              = "postgres"
+  engine_version      = "12.5"
+  instance_class      = "db.t2.micro"
+  username            = "foo"
+  password            = "foobarbaz"
+  skip_final_snapshot = true
+}
