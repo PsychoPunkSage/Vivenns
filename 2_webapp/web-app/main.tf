@@ -14,6 +14,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
+# `aws_instance` ::> represents EC2 in aws.
 resource "aws_instance" "instance_1" {
   ami             = "ami-011899242bb902164" # Means ::> `Ubuntu 20.04 LTS - us-east-1`
   instance_type   = "t2.micro"
@@ -38,6 +39,7 @@ resource "aws_instance" "instance_2" {
 }
 
 # For big data management
+# s3_bucket ::> object storage service
 resource "aws_s3_bucket" "bucket" {
   bucket        = "devops-directive-web-app-data"
   force_destroy = true
