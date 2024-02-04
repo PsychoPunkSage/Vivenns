@@ -1,0 +1,14 @@
+>>>>>>>>>>>>>><<<<<<<<<<<<<<
+>>>>>>>> in AWS CLI <<<<<<<<
+>>>>>>>>>>>>>><<<<<<<<<<<<<<
+
+> terraform init    ||     Initialize backend -> (All backend stuffs are stored locally)
+  
+> terraform plan    ||     Qwery AWS API, 
+                              1. Compare with current state (curretly deployed) with the stuffs mentioned in the `main.tf`
+  
+> terraform apply 
+  -var="db_user=myuser" 
+  -var="db_pass=SOMETHING_SUPER_SECURE"   ||     Take the action metioned in the `plan` and do the necessary provission.
+
+> terraform destroy ||     Cleanup only....
